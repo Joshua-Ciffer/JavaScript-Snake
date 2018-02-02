@@ -11,12 +11,15 @@ function Snake() {
 	this.tail = [];
 	
 	this.drawSnake = function() {
+		fill(255, 255, 0);
 		for (var i = 0; i < this.length; i++) {
-			fill(255, 255, 0);
-			rect(0, 0, 10, 10);
+			rect((this.x + i), (this.y + i), 10, 10);
 		}
-		this.x = this.x + this.xSpeed;
-		this.y = this.y + this.ySpeed;
+	}
+	
+	this.updatePosition = function(x, y) {
+		this.x = this.x + x;
+		this.y = this.y + y;
 	}
 	
 }
