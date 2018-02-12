@@ -4,15 +4,17 @@
  */
 var snake;
 var food;
+var scl = 10;
+
 function setup() {
 	createCanvas(500, 500);
-	background(0);
 	snake = new Snake();
 	food = new Food();
-	food.respawnFood();
+	frameRate(15);
 }
 
 function draw() {
+	background(0);
 	keyPressed();
 	updatePosition();
 }
@@ -27,7 +29,6 @@ function keyPressed() {
 	} else if (keyCode == LEFT_ARROW) {
 		snake.move(-1, 0);
 	}
-	
 }
 
 function updatePosition() {
