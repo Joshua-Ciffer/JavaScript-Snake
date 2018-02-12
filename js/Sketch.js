@@ -1,34 +1,38 @@
 /**
  * @author Joshua Ciffer
- * @version 02/01/2018
+ * @version 02/12/2018
  */
+var snake;
+var food;
 function setup() {
 	createCanvas(500, 500);
 	background(0);
 	snake = new Snake();
-	spawnFood();
+	food = new Food();
+	food.respawnFood();
 }
 
 function draw() {
 	keyPressed();
-	snake.drawSnake();
-}
-
-function spawnFood() {
-	var x = floor(random(height));
-	var y = floor(random(width));
-	fill(0, 255, 255);
-	rect(x, y, 10, 10);
+	updatePosition();
 }
 
 function keyPressed() {
 	if (keyCode == UP_ARROW) {
-		snake.updatePosition(0, -1);
+		snake.move(0, -1);
 	} else if (keyCode == DOWN_ARROW) {
-		snake.updatePosition(0, 1);
+		snake.move(0, 1);
 	} else if (keyCode == RIGHT_ARROW) {
-		snake.updatePosition(1, 0);
+		snake.move(1, 0);
 	} else if (keyCode == LEFT_ARROW) {
-		snake.updatePosition(-1, 0);
+		snake.move(-1, 0);
 	}
+	
+}
+
+function updatePosition() {
+	fill(255, 255, 0);
+	rect(this.snake.pos.x, this.snake.pos.y, 10, 10);
+	fill(255);
+	rect(this.food.pos.x, this.food.pos.y, 10, 10);
 }
