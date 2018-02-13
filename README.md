@@ -1,2 +1,2 @@
 # JavaScript-Snake-Game
-Created new branch for github pages.
+View the game in a website: https://joshua-ciffer.github.io/JavaScript-Snake/
