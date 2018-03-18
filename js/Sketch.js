@@ -1,6 +1,6 @@
 /**
  * @author Joshua Ciffer
- * @version 02/12/2018
+ * @version 02/18/2018
  */
 var snake;
 var food;
