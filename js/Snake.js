@@ -8,8 +8,9 @@
 /**
  * Snake constructor function.
  * 
- * A snake is spawned in a random location on the 50x50 grid. Its speed starts at zero, and its length starts at one. Its speed is updated by calling updateSpeed() and setting
- * its x and y speed. The snake is moved every frame by calling move(), which moves the snake's x and y position in increments of 10 (one grid space).
+ * A snake is spawned in a random location on the 50x50 grid. Its speed starts at zero, and its length starts at one. Its speed is updated by calling updateSpeed() which sets
+ * its x and y speed. The snake is moved every frame by calling move(), which moves the snake's x and y position in increments of 10 (one grid space). A snake dies when it
+ * runs into itself.
  * 
  * @returns A new Snake object.
  */

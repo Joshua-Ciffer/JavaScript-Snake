@@ -1,11 +1,30 @@
 /**
+ * This file contains the p5.js functions for creating the html canvas and drawing to the screen.
+ * 
  * @author Joshua Ciffer
  * @version 06/22/2018
  */
+
+/**
+ * The snake object.
+ */
 var snake;
+
+/**
+ * The food object.
+ */
 var food;
+
+/**
+ * The size of each grid space on the canvas.
+ */
 var gridScale = 10;
 
+/**
+ * Initial canvas setup. Size is set to 500x500 (50x50 logical size because of grid scale), framerate is set to 14, and objects are initialized.
+ * 
+ * @returns void
+ */
 function setup() {
 	createCanvas(500, 500);
 	snake = new Snake();
@@ -13,12 +32,22 @@ function setup() {
 	frameRate(14);
 }
 
+/**
+ * Repeatedly draws to the screen and updates the canvas.
+ * 
+ * @returns void
+ */
 function draw() {
 	background(0);
 	drawSnake();
 	drawFood();
 }
 
+/**
+ * Changes the direction of snake movement based off of input from the arrow keys or WASD keys.
+ * 
+ * @returns void
+ */
 function keyPressed() {
 	if ((keyCode == UP_ARROW) || (keyCode == 87)) { // Up arrow or W key.
 		snake.updateSpeed(0, -1);
@@ -31,13 +60,24 @@ function keyPressed() {
 	}
 }
 
+/**
+ * Updates the snake's position and draws to the canvas.
+ * 
+ * @returns void
+ */
 function drawSnake() {
 	snake.updatePosition();
 	fill(255, 255, 0);
 	rect(this.snake.pos.x, this.snake.pos.y, 10, 10);
 }
 
+/**
+ * Updates the food's position and draws to the canvas.
+ * 
+ * @returns void
+ */
 function drawFood() {
+	food.updatePosition();
 	fill(255);
 	rect(this.food.pos.x, this.food.pos.y, 10, 10);
 }
