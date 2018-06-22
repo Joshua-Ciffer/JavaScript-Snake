@@ -20,13 +20,13 @@ function draw() {
 }
 
 function keyPressed() {
-	if (keyCode == UP_ARROW) {
+	if ((keyCode == UP_ARROW) || (keyCode == 87)) { // Up arrow or W key.
 		snake.updateSpeed(0, -1);
-	} else if (keyCode == DOWN_ARROW) {
+	} else if ((keyCode == DOWN_ARROW) || (keyCode == 83)) { // Down arrow or S key.
 		snake.updateSpeed(0, 1);
-	} else if (keyCode == RIGHT_ARROW) {
+	} else if ((keyCode == RIGHT_ARROW) || (keyCode == 68)) { // Right arrow or D key.
 		snake.updateSpeed(1, 0);
-	} else if (keyCode == LEFT_ARROW) {
+	} else if ((keyCode == LEFT_ARROW) || (keyCode == 65)) { // Left arrow or A key.
 		snake.updateSpeed(-1, 0);
 	}
 }
