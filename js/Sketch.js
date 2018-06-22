@@ -4,7 +4,7 @@
  */
 var snake;
 var food;
-var scl = 10;
+var gridScale = 10;
 
 function setup() {
 	createCanvas(500, 500);
@@ -15,23 +15,23 @@ function setup() {
 
 function draw() {
 	background(0);
-	keyPressed();
-	updatePosition();
+	updateSnakePosition();
 }
 
 function keyPressed() {
 	if (keyCode == UP_ARROW) {
-		snake.move(0, -1);
+		snake.updateSpeed(0, -1);
 	} else if (keyCode == DOWN_ARROW) {
-		snake.move(0, 1);
+		snake.updateSpeed(0, 1);
 	} else if (keyCode == RIGHT_ARROW) {
-		snake.move(1, 0);
+		snake.updateSpeed(1, 0);
 	} else if (keyCode == LEFT_ARROW) {
-		snake.move(-1, 0);
+		snake.updateSpeed(-1, 0);
 	}
 }
 
-function updatePosition() {
+function updateSnakePosition() {
+	snake.move();
 	fill(255, 255, 0);
 	rect(this.snake.pos.x, this.snake.pos.y, 10, 10);
 	fill(255);
