@@ -1,6 +1,6 @@
 /**
  * @author Joshua Ciffer
- * @version 02/18/2018
+ * @version 06/22/2018
  */
 var snake;
 var food;
@@ -10,12 +10,14 @@ function setup() {
 	createCanvas(500, 500);
 	snake = new Snake();
 	food = new Food();
+	console.log(food.pos.x + " " + food.pos.y)
 	frameRate(15);
 }
 
 function draw() {
 	background(0);
-	updateSnakePosition();
+	drawSnake();
+	drawFood();
 }
 
 function keyPressed() {
@@ -30,10 +32,13 @@ function keyPressed() {
 	}
 }
 
-function updateSnakePosition() {
-	snake.move();
+function drawSnake() {
+	snake.updatePosition();
 	fill(255, 255, 0);
 	rect(this.snake.pos.x, this.snake.pos.y, 10, 10);
+}
+
+function drawFood() {
 	fill(255);
 	rect(this.food.pos.x, this.food.pos.y, 10, 10);
 }

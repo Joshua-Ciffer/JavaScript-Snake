@@ -3,10 +3,11 @@
  * @version 02/13/2018
  */
 function Food() {
-	this.pos = createVector(floor(random(width)), floor(random(height)));
+	
+	this.pos = createVector((round(random(0, width) / 10) * 10), (round(random(0, height) / 10) * 10));
 	
 	this.respawnFood = function() {
-		this.pos = createVector(floor(random(width)), floor(random(height)));
+		this.pos = createVector((round(random(0, width) / 10) * 10), (round(random(0, height) / 10) * 10));
 	}
 	
 	this.eat = function(Snake) {
