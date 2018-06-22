@@ -19,7 +19,7 @@ function Snake() {
 	/**
 	 * This snake's current position on the canvas, stored in a vector object with an x and y position.
 	 */
-	this.pos = createVector((round(random(0, width) / 10) * 10), (round(random(0, height) / 10) * 10));
+	this.pos = createVector((floor(random(0, width) / 10) * 10), (floor(random(0, height) / 10) * 10));
 
 	/**
 	 * This snake's speed in the x direction.

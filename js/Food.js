@@ -17,14 +17,15 @@ function Food() {
 	/**
 	 * This food objects position on the canvas, stored in a vector object with an x and y position.
 	 */
-	this.pos = createVector((round(random(0, width) / 10) * 10), (round(random(0, height) / 10) * 10));
+	this.pos = createVector((floor(random(0, width) / 10) * 10), (floor(random(0, height) / 10) * 10));
 	
 	/**
 	 * If the snake comes in contact with the food and eats it, then the food is moved to a new location on the grid.
 	 */
 	this.updatePosition = function(Snake) {
 		if (dist(this.pos.x, this.pos.y, snake.pos.x, snake.pos.y) < 1) {
-			this.pos = createVector((round(random(0, width) / 10) * 10), (round(random(0, height) / 10) * 10));
+			this.pos = createVector((floor(random(0, width) / 10) * 10), (floor(random(0, height) / 10) * 10));
+			snake.length++;
 		}
 	}
 	

@@ -66,9 +66,22 @@ function keyPressed() {
  * @returns void
  */
 function drawSnake() {
+	console.log(this.snake.pos.x + " " + this.snake.pos.y);
 	snake.updatePosition();
 	fill(255, 255, 0);
-	rect(this.snake.pos.x, this.snake.pos.y, 10, 10);
+	let i = 0;
+	// for (let i = 0; i < snake.length; i++) {
+	rect(this.snake.pos.x - (i * 10), this.snake.pos.y - (i * 10), 10, 10);
+	// }
+	if (this.snake.pos.x < 0) { // If snake goes off the left side of the screen,
+		this.snake.pos.x = width;
+	} else if (this.snake.pos.x >= width) { // If snake goes off the right side of the screen,
+		this.snake.pos.x = -10;
+	} else if (this.snake.pos.y < 0) { // If snake goes off the top of the screen,
+		this.snake.pos.y = height;
+	} else if (this.snake.pos.y >= height) { // If snake goes off the bottom of the screen,
+		this.snake.pos.y = -10;
+	}
 }
 
 /**
