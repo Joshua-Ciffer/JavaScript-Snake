@@ -1,6 +1,16 @@
 /**
+ * This file contains a constructor function and functions that operate on a Food object.
+ * 
  * @author Joshua Ciffer
- * @version 02/13/2018
+ * @version 06/22/2018
+ */
+
+/**
+ * Food constructor function.
+ * 
+ * A Food object is spawned in a random location on the 50x50 grid. If the snake comes in contact and eats the food, then it is re-spawned in a new location.
+ *
+ * @returns A new Food object.
  */
 function Food() {
 	

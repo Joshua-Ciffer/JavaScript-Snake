@@ -1,5 +1,5 @@
 /**
- * This file contains a constructor function and methods that operate on a snake object.
+ * This file contains a constructor function and functions that operate on a snake object.
  * 
  * @author Joshua Ciffer
  * @version 06/22/2018
@@ -11,7 +11,7 @@
  * A snake is spawned in a random location on the 50x50 grid. Its speed starts at zero, and its length starts at one. Its speed is updated by calling updateSpeed() and setting
  * its x and y speed. The snake is moved every frame by calling move(), which moves the snake's x and y position in increments of 10 (one grid space).
  * 
- * @returns void
+ * @returns A new Snake object.
  */
 function Snake() {
 

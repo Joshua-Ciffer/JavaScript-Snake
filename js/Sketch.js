@@ -10,8 +10,7 @@ function setup() {
 	createCanvas(500, 500);
 	snake = new Snake();
 	food = new Food();
-	console.log(food.pos.x + " " + food.pos.y)
-	frameRate(15);
+	frameRate(14);
 }
 
 function draw() {
