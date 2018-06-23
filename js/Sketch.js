@@ -57,6 +57,8 @@ function keyPressed() {
 		snake.updateSpeed(1, 0);
 	} else if ((keyCode == LEFT_ARROW) || (keyCode == 65)) { // Left arrow or A key.
 		snake.updateSpeed(-1, 0);
+	} else if (keyCode == 32) { // Space bar.
+		snake.updateSpeed(0, 0);
 	}
 }
 
@@ -75,12 +77,16 @@ function drawSnake() {
 	// }
 	if (this.snake.pos.x < 0) { // If snake goes off the left side of the screen,
 		this.snake.pos.x = width;
+		// snake.updateSpeed(-1, 0);
 	} else if (this.snake.pos.x >= width) { // If snake goes off the right side of the screen,
 		this.snake.pos.x = -10;
+		// snake.updateSpeed(1, 0);
 	} else if (this.snake.pos.y < 0) { // If snake goes off the top of the screen,
 		this.snake.pos.y = height;
+		// snake.updateSpeed(0, -1);
 	} else if (this.snake.pos.y >= height) { // If snake goes off the bottom of the screen,
 		this.snake.pos.y = -10;
+		// snake.updateSpeed(0, 1);
 	}
 }
 
