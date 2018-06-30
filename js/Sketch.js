@@ -2,7 +2,7 @@
  * This file contains the p5.js functions for creating the html canvas and drawing to the screen.
  * 
  * @author Joshua Ciffer
- * @version 06/22/2018
+ * @version 06/29/2018
  */
 
 /**
@@ -50,13 +50,21 @@ function draw() {
  */
 function keyPressed() {
 	if ((keyCode == UP_ARROW) || (keyCode == 87)) { // Up arrow or W key.
-		snake.updateSpeed(0, -1);
+		if (!(this.snake.pos.x < 0) && !(this.snake.pos.x >= width)) {
+			snake.updateSpeed(0, -1);
+		}
 	} else if ((keyCode == DOWN_ARROW) || (keyCode == 83)) { // Down arrow or S key.
-		snake.updateSpeed(0, 1);
+		if (!(this.snake.pos.x < 0) && !(this.snake.pos.x >= width)) {
+			snake.updateSpeed(0, 1);
+		}
 	} else if ((keyCode == RIGHT_ARROW) || (keyCode == 68)) { // Right arrow or D key.
-		snake.updateSpeed(1, 0);
+		if (!(this.snake.pos.y < 0) && !(this.snake.pos.y >= height)) {
+			snake.updateSpeed(1, 0);
+		}
 	} else if ((keyCode == LEFT_ARROW) || (keyCode == 65)) { // Left arrow or A key.
-		snake.updateSpeed(-1, 0);
+		if (!(this.snake.pos.y < 0) && !(this.snake.pos.y >= height)) {
+			snake.updateSpeed(-1, 0);
+		}
 	} else if (keyCode == 32) { // Space bar.
 		snake.updateSpeed(0, 0);
 	}
@@ -68,25 +76,18 @@ function keyPressed() {
  * @returns void
  */
 function drawSnake() {
-	console.log(this.snake.pos.x + " " + this.snake.pos.y);
+	console.log("X: " + this.snake.pos.x + " Y: " + this.snake.pos.y);
 	snake.updatePosition();
 	fill(255, 255, 0);
-	let i = 0;
-	// for (let i = 0; i < snake.length; i++) {
-	rect(this.snake.pos.x - (i * 10), this.snake.pos.y - (i * 10), 10, 10);
-	// }
+	rect(this.snake.pos.x, this.snake.pos.y, 10, 10);
 	if (this.snake.pos.x < 0) { // If snake goes off the left side of the screen,
 		this.snake.pos.x = width;
-		// snake.updateSpeed(-1, 0);
 	} else if (this.snake.pos.x >= width) { // If snake goes off the right side of the screen,
 		this.snake.pos.x = -10;
-		// snake.updateSpeed(1, 0);
 	} else if (this.snake.pos.y < 0) { // If snake goes off the top of the screen,
 		this.snake.pos.y = height;
-		// snake.updateSpeed(0, -1);
 	} else if (this.snake.pos.y >= height) { // If snake goes off the bottom of the screen,
 		this.snake.pos.y = -10;
-		// snake.updateSpeed(0, 1);
 	}
 }
 
