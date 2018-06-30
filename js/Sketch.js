@@ -76,7 +76,6 @@ function keyPressed() {
  * @returns void
  */
 function drawSnake() {
-	console.log("X: " + this.snake.pos.x + " Y: " + this.snake.pos.y);
 	snake.updatePosition();
 	fill(255, 255, 0);
 	rect(this.snake.pos.x, this.snake.pos.y, 10, 10);
