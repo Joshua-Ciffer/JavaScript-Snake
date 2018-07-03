@@ -22,7 +22,7 @@ function Food() {
 	/**
 	 * If the snake comes in contact with the food and eats it, then the food is moved to a new location on the grid.
 	 */
-	this.updatePosition = function(Snake) {
+	this.updatePosition = function() {
 		if (dist(this.pos.x, this.pos.y, snake.pos.x, snake.pos.y) < 1) {
 			this.pos = createVector((floor(random(0, width) / 10) * 10), (floor(random(0, height) / 10) * 10));
 			snake.length++;
