@@ -51,22 +51,22 @@ function draw() {
 function keyPressed() {
 	if ((keyCode == UP_ARROW) || (keyCode == 87)) { // Up arrow or W key.
 		if (!(this.snake.pos.x < 0) && !(this.snake.pos.x >= width)) {
-			snake.updateSpeed(0, -1);
+			this.snake.updateSpeed(0, -1);
 		}
 	} else if ((keyCode == DOWN_ARROW) || (keyCode == 83)) { // Down arrow or S key.
 		if (!(this.snake.pos.x < 0) && !(this.snake.pos.x >= width)) {
-			snake.updateSpeed(0, 1);
+			this.snake.updateSpeed(0, 1);
 		}
 	} else if ((keyCode == RIGHT_ARROW) || (keyCode == 68)) { // Right arrow or D key.
 		if (!(this.snake.pos.y < 0) && !(this.snake.pos.y >= height)) {
-			snake.updateSpeed(1, 0);
+			this.snake.updateSpeed(1, 0);
 		}
 	} else if ((keyCode == LEFT_ARROW) || (keyCode == 65)) { // Left arrow or A key.
 		if (!(this.snake.pos.y < 0) && !(this.snake.pos.y >= height)) {
-			snake.updateSpeed(-1, 0);
+			this.snake.updateSpeed(-1, 0);
 		}
 	} else if (keyCode == 32) { // Space bar.
-		snake.updateSpeed(0, 0);
+		this.snake.updateSpeed(0, 0);
 	}
 }
 
@@ -76,9 +76,20 @@ function keyPressed() {
  * @returns void
  */
 function drawSnake() {
-	snake.updatePosition();
+	this.snake.updatePosition();
 	fill(255, 255, 0);
 	rect(this.snake.pos.x, this.snake.pos.y, 10, 10);
+	for (let i = 1; i < this.snake.length; i++) {
+		if ((this.snake.xSpeed == 0) && (this.snake.ySpeed == -1)) { // Up
+			rect(this.snake.pos.x, this.snake.pos.y + (i * gridScale), 10, 10);
+		} else if ((this.snake.xSpeed == 0) && (this.snake.ySpeed == 1)) { // Down
+			rect(this.snake.pos.x, this.snake.pos.y - (i * gridScale), 10, 10);
+		} else if ((this.snake.xSpeed == 1) && (this.snake.ySpeed == 0)) { // Right
+			rect(this.snake.pos.x - (i * gridScale), this.snake.pos.y, 10, 10);
+		} else if ((this.snake.xSpeed == -1) && (this.snake.ySpeed == 0)) { // Left
+			rect(this.snake.pos.x + (i * gridScale), this.snake.pos.y, 10, 10);
+		}
+	}
 	if (this.snake.pos.x < 0) { // If snake goes off the left side of the screen,
 		this.snake.pos.x = width;
 	} else if (this.snake.pos.x >= width) { // If snake goes off the right side of the screen,
@@ -88,6 +99,7 @@ function drawSnake() {
 	} else if (this.snake.pos.y >= height) { // If snake goes off the bottom of the screen,
 		this.snake.pos.y = -10;
 	}
+	document.getElementById("length").innerText = this.snake.length;
 }
 
 /**
@@ -96,7 +108,7 @@ function drawSnake() {
  * @returns void
  */
 function drawFood() {
-	food.updatePosition();
+	this.food.updatePosition();
 	fill(255);
 	rect(this.food.pos.x, this.food.pos.y, 10, 10);
 }
