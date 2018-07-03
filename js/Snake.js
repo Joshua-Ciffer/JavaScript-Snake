@@ -8,9 +8,9 @@
 /**
  * Snake constructor function.
  * 
- * A snake is spawned in a random location on the 50x50 grid. Its speed starts at zero, and its length starts at one. Its speed is updated by calling updateSpeed() which sets
- * its x and y speed. The snake is moved every frame by calling move(), which moves the snake's x and y position in increments of 10 (one grid space). A snake dies when it
- * runs into itself.
+ * A snake is spawned in a random location on the 50x50 grid. Its speed starts at zero, and its length starts at one. Its speed is updated by calling updateSpeed() 
+ * which sets its x and y speed. The snake is moved every frame by calling move(), which moves the snake's x and y position in increments of 10 (one grid space). A 
+ * snake dies when it runs into itself.
  * 
  * @returns A new Snake object.
  */
@@ -35,12 +35,13 @@ function Snake() {
 	 * The length of this snake.
 	 */
 	this.length = 1;
-	
+
 	/**
-	 * The snake's tail. Each time the snake eats a food, one length is added on to its tail.
+	 * The snake's tail. Each time the snake eats a food, one length is added on to its tail. The array stores the history of the snake's location for as long 
+	 * as the snake's tail is.
 	 */
 	this.tail = [];
-	
+
 	/**
 	 * Updates this snake's speed.
 	 * 
