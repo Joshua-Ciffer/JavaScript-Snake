@@ -32,9 +32,9 @@ function Snake() {
 	this.ySpeed = 0;
 
 	/**
-	 * The length of this snake.
+	 * The snake's tail. Each time the snake eats a food, one length is added on to its tail.
 	 */
-	this.length = 1;
+	this.tail = [];
 
 	/**
 	 * Updates this snake's speed.

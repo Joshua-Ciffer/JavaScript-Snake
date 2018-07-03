@@ -27,7 +27,7 @@ function Food() {
 	this.updatePosition = function() {
 		if (dist(this.pos.x, this.pos.y, snake.pos.x, snake.pos.y) < 1) {
 			this.pos = createVector((floor(random(0, width) / 10) * 10), (floor(random(0, height) / 10) * 10));
-			snake.length++;
+			snake.tail[snake.tail.length] = new Tail(snake.pos.x, snake.pos.y, snake.xSpeed, snake.ySpeed);
 		}
 	}
 	
