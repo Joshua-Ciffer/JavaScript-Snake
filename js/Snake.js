@@ -19,7 +19,7 @@ function Snake() {
 	/**
 	 * This snake's current position on the canvas, stored in a vector object with an x and y position.
 	 */
-	this.pos = createVector((floor(random(0, width) / gridScale) * gridScale), (floor(random(0, height) / gridScale) * gridScale));
+	this.pos = pickLocation();
 
 	/**
 	 * This snake's speed in the x direction.
@@ -32,10 +32,15 @@ function Snake() {
 	this.ySpeed = 0;
 
 	/**
+	 * The length of this snake.
+	 */
+	this.length = 1;
+	
+	/**
 	 * The snake's tail. Each time the snake eats a food, one length is added on to its tail.
 	 */
 	this.tail = [];
-
+	
 	/**
 	 * Updates this snake's speed.
 	 * 

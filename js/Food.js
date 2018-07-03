@@ -13,12 +13,12 @@
  * @returns A new Food object.
  */
 function Food() {
-	
+
 	/**
-	 * This food objects position on the canvas, stored in a vector object with an x and y position.
+	 * This food object's position on the canvas, stored in a vector object with an x and y position.
 	 */
-	this.pos = createVector((floor(random(0, width) / gridScale) * gridScale), (floor(random(0, height) / gridScale) * gridScale));
-	
+	this.pos = pickLocation();
+
 	/**
 	 * If the snake comes in contact with the food and eats it, then the food is moved to a new location on the grid.
 	 * 
@@ -26,17 +26,9 @@ function Food() {
 	 */
 	this.updatePosition = function() {
 		if (dist(this.pos.x, this.pos.y, snake.pos.x, snake.pos.y) < 1) {
-			this.pos = createVector((floor(random(0, width) / gridScale) * gridScale), (floor(random(0, height) / gridScale) * gridScale));
-			if ((snake.xSpeed == 0) && (snake.ySpeed == -1)) { // Up
-				snake.tail[snake.tail.length] = new Tail(snake.pos.x, (snake.pos.y + gridScale), snake.xSpeed, snake.ySpeed);
-			} else if ((snake.xSpeed == 0) && (snake.ySpeed == 1)) { // Down
-				snake.tail[snake.tail.length] = new Tail(snake.pos.x, (snake.pos.y - gridScale), snake.xSpeed, snake.ySpeed);
-			} else if ((snake.xSpeed == 1) && (snake.ySpeed == 0)) { // Right
-				snake.tail[snake.tail.length] = new Tail((snake.pos.x - gridScale), snake.pos.y, snake.xSpeed, snake.ySpeed);
-			} else if ((snake.xSpeed == -1) && (snake.ySpeed == 0)) { // Left
-				snake.tail[snake.tail.length] = new Tail((snake.pos.x + gridScale), snake.pos.y, snake.xSpeed, snake.ySpeed);
-			}
+			this.pos = pickLocation();
+			snake.length++;
 		}
 	}
-	
+
 }

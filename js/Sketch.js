@@ -20,6 +20,8 @@ var food;
  */
 var gridScale = 10;
 
+var j = 0;
+
 /**
  * Initial canvas setup. Size is set to 500x500 (50x50 logical size because of grid scale), framerate is set to 14, and objects are initialized.
  * 
@@ -71,6 +73,15 @@ function keyPressed() {
 }
 
 /**
+ * Picks a new random location on the 50x50 grid and stores the x and y position in a vector object.
+ * 
+ * @returns A random location on the canvas stored in a vector object.
+ */
+function pickLocation() {
+	return createVector((floor(random(0, width) / gridScale) * gridScale), (floor(random(0, height) / gridScale) * gridScale));
+}
+
+/**
  * Updates the snake's position and draws to the canvas.
  * 
  * @returns void
@@ -80,15 +91,30 @@ function drawSnake() {
 	fill(255, 255, 0);
 	rect(this.snake.pos.x, this.snake.pos.y, gridScale, gridScale);
 	for (let i = 0; i < this.snake.tail.length; i++) {
+
 		if ((this.snake.xSpeed == 0) && (this.snake.ySpeed == -1)) { // Up
-			rect(this.snake.pos.x, this.snake.pos.y + ((i + 1) * gridScale), gridScale, gridScale);
+
+			rect(this.snake.tail[i].pos.x, this.snake.tail[i].pos.y + ((i + 1) * gridScale), gridScale, gridScale);
+
 		} else if ((this.snake.xSpeed == 0) && (this.snake.ySpeed == 1)) { // Down
-			rect(this.snake.pos.x, this.snake.pos.y - ((i + 1) * gridScale), gridScale, gridScale);
+
+			rect(this.snake.tail[i].pos.x, this.snake.tail[i].pos.y - ((i + 1) * gridScale), gridScale, gridScale);
+
 		} else if ((this.snake.xSpeed == 1) && (this.snake.ySpeed == 0)) { // Right
-			rect(this.snake.pos.x - ((i + 1) * gridScale), this.snake.pos.y, gridScale, gridScale);
+
+			rect(this.snake.tail[i].pos.x - ((i + 1) * gridScale), this.snake.tail[i].pos.y, gridScale, gridScale);
+
 		} else if ((this.snake.xSpeed == -1) && (this.snake.ySpeed == 0)) { // Left
-			rect(this.snake.pos.x + ((i + 1) * gridScale), this.snake.pos.y, gridScale, gridScale);
+
+			rect(this.snake.tail[i].pos.x + ((i + 1) * gridScale), this.snake.tail[i].pos.y, gridScale, gridScale);
+
 		}
+		this.snake.tail[i].updatePosition();
+// if (j >= this.snake.tail.length) {
+// j = 0;
+// }
+// this.snake.tail[j].updateSpeed(this.snake.xSpeed, this.snake.ySpeed);
+// j++;
 	}
 	if (this.snake.pos.x < 0) { // If snake goes off the left side of the screen,
 		this.snake.pos.x = width;
