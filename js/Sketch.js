@@ -128,7 +128,7 @@ function drawFood() {
 function checkGameEnd() {
 	for (let i = 0; i < this.snake.tail.length - 1; i++) {
 		if ((this.snake.tail[i].x == this.snake.pos.x) && (this.snake.tail[i].y == this.snake.pos.y)) {	// If snake hits its tail, player loses.
-			window.alert("You lost! Your snake got to length: " + this.snake.length + ".");
+			window.alert("You lost! Your snake got to length: " + this.snake.length);
 			snake = new Snake();
 			food = new Food();
 		}
