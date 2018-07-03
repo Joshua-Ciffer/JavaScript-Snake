@@ -2,7 +2,7 @@
  * This file contains the p5.js functions for creating the html canvas and drawing to the screen.
  * 
  * @author Joshua Ciffer
- * @version 06/29/2018
+ * @version 07/03/2018
  */
 
 /**

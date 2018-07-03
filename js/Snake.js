@@ -39,7 +39,10 @@ function Snake() {
 	/**
 	 * Updates this snake's speed.
 	 * 
-	 * Up: x = 0, y = -1 Down: x = 0, y = 1 Right: x = 1, y = 0 Left: x = -1, y = 0
+	 * Up: x = 0, y = -1
+	 * Down: x = 0, y = 1
+	 * Right: x = 1, y = 0
+	 * Left: x = -1, y = 0
 	 * 
 	 * @param x
 	 *        The speed in the x direction to set.
