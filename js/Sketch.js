@@ -78,26 +78,26 @@ function keyPressed() {
 function drawSnake() {
 	this.snake.updatePosition();
 	fill(255, 255, 0);
-	rect(this.snake.pos.x, this.snake.pos.y, 10, 10);
+	rect(this.snake.pos.x, this.snake.pos.y, gridScale, gridScale);
 	for (let i = 0; i < this.snake.tail.length; i++) {
 		if ((this.snake.xSpeed == 0) && (this.snake.ySpeed == -1)) { // Up
-			rect(this.snake.pos.x, this.snake.pos.y + ((i + 1) * gridScale), 10, 10);
+			rect(this.snake.pos.x, this.snake.pos.y + ((i + 1) * gridScale), gridScale, gridScale);
 		} else if ((this.snake.xSpeed == 0) && (this.snake.ySpeed == 1)) { // Down
-			rect(this.snake.pos.x, this.snake.pos.y - ((i + 1) * gridScale), 10, 10);
+			rect(this.snake.pos.x, this.snake.pos.y - ((i + 1) * gridScale), gridScale, gridScale);
 		} else if ((this.snake.xSpeed == 1) && (this.snake.ySpeed == 0)) { // Right
-			rect(this.snake.pos.x - ((i + 1) * gridScale), this.snake.pos.y, 10, 10);
+			rect(this.snake.pos.x - ((i + 1) * gridScale), this.snake.pos.y, gridScale, gridScale);
 		} else if ((this.snake.xSpeed == -1) && (this.snake.ySpeed == 0)) { // Left
-			rect(this.snake.pos.x + ((i + 1) * gridScale), this.snake.pos.y, 10, 10);
+			rect(this.snake.pos.x + ((i + 1) * gridScale), this.snake.pos.y, gridScale, gridScale);
 		}
 	}
 	if (this.snake.pos.x < 0) { // If snake goes off the left side of the screen,
 		this.snake.pos.x = width;
 	} else if (this.snake.pos.x >= width) { // If snake goes off the right side of the screen,
-		this.snake.pos.x = -10;
+		this.snake.pos.x = -gridScale;
 	} else if (this.snake.pos.y < 0) { // If snake goes off the top of the screen,
 		this.snake.pos.y = height;
 	} else if (this.snake.pos.y >= height) { // If snake goes off the bottom of the screen,
-		this.snake.pos.y = -10;
+		this.snake.pos.y = -gridScale;
 	}
 	document.getElementById("length").innerText = this.snake.tail.length + 1;
 }
@@ -110,5 +110,5 @@ function drawSnake() {
 function drawFood() {
 	this.food.updatePosition();
 	fill(255);
-	rect(this.food.pos.x, this.food.pos.y, 10, 10);
+	rect(this.food.pos.x, this.food.pos.y, gridScale, gridScale);
 }
