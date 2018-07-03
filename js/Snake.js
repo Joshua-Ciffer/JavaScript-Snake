@@ -2,7 +2,7 @@
  * This file contains a constructor function and functions that operate on a snake object.
  * 
  * @author Joshua Ciffer
- * @version 06/22/2018
+ * @version 07/03/2018
  */
 
 /**
@@ -39,10 +39,13 @@ function Snake() {
 	/**
 	 * Updates this snake's speed.
 	 * 
-	 * Up: x = 0, y = -1
-	 * Down: x = 0, y = 1
-	 * Right: x = 1, y = 0
-	 * Left: x = -1, y = 0
+	 * Up: x = 0, y = -1 Down: x = 0, y = 1 Right: x = 1, y = 0 Left: x = -1, y = 0
+	 * 
+	 * @param x
+	 *        The speed in the x direction to set.
+	 * @param y
+	 *        The speed in the y direction to set.
+	 * @returns void
 	 */
 	this.updateSpeed = function(x, y) {
 		this.xSpeed = x;
@@ -51,6 +54,8 @@ function Snake() {
 
 	/**
 	 * Updates this snake's position. Snake moves in increments of 10 (one grid space).
+	 * 
+	 * @returns void
 	 */
 	this.updatePosition = function() {
 		this.pos.x += this.xSpeed * gridScale;

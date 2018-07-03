@@ -2,7 +2,7 @@
  * This file contains a constructor function and functions that operate on a Food object.
  * 
  * @author Joshua Ciffer
- * @version 06/22/2018
+ * @version 07/03/2018
  */
 
 /**
@@ -21,6 +21,8 @@ function Food() {
 	
 	/**
 	 * If the snake comes in contact with the food and eats it, then the food is moved to a new location on the grid.
+	 * 
+	 * @returns void
 	 */
 	this.updatePosition = function() {
 		if (dist(this.pos.x, this.pos.y, snake.pos.x, snake.pos.y) < 1) {
