@@ -52,19 +52,35 @@ function draw() {
 function keyPressed() {
 	if ((keyCode == UP_ARROW) || (keyCode == 87)) { // Up arrow or W key.
 		if (!(this.snake.pos.x < 0) && !(this.snake.pos.x >= width)) {
-			this.snake.updateSpeed(0, -1);
+			if (this.snake.length == 1) {
+				this.snake.updateSpeed(0, -1);
+			} else if ((this.snake.xSpeed != 0) && (this.snake.ySpeed != 1)) {
+				this.snake.updateSpeed(0, -1);
+			}
 		}
 	} else if ((keyCode == DOWN_ARROW) || (keyCode == 83)) { // Down arrow or S key.
 		if (!(this.snake.pos.x < 0) && !(this.snake.pos.x >= width)) {
-			this.snake.updateSpeed(0, 1);
+			if (this.snake.length == 1) {
+				this.snake.updateSpeed(0, 1);
+			} else if ((this.snake.xSpeed != 0) && (this.snake.ySpeed != -1)) {
+				this.snake.updateSpeed(0, 1);
+			}
 		}
 	} else if ((keyCode == RIGHT_ARROW) || (keyCode == 68)) { // Right arrow or D key.
 		if (!(this.snake.pos.y < 0) && !(this.snake.pos.y >= height)) {
-			this.snake.updateSpeed(1, 0);
+			if (this.snake.length == 1) {
+				this.snake.updateSpeed(1, 0);
+			} else if ((this.snake.xSpeed != -1) && (this.snake.ySpeed != 0)) {
+				this.snake.updateSpeed(1, 0);
+			}
 		}
 	} else if ((keyCode == LEFT_ARROW) || (keyCode == 65)) { // Left arrow or A key.
 		if (!(this.snake.pos.y < 0) && !(this.snake.pos.y >= height)) {
-			this.snake.updateSpeed(-1, 0);
+			if (this.snake.length == 1) {
+				this.snake.updateSpeed(-1, 0);
+			} else if ((this.snake.xSpeed != 1) && (this.snake.ySpeed != 0)) {
+				this.snake.updateSpeed(-1, 0);
+			}
 		}
 	} else if (keyCode == 32) { // Space bar.
 		this.snake.updateSpeed(0, 0);
